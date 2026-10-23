@@ -1,10 +1,8 @@
-# app.py
 import os
 from dotenv import load_dotenv
 from flask import Flask
 from flask_cors import CORS
-from extensions import db  # <--- Import from extensions here
-
+from extensions import db  
 load_dotenv()
 
 def create_app():
@@ -15,7 +13,7 @@ def create_app():
     app.config["SQLALCHEMY_DATABASE_URI"] = database_url
     app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
     
-    db.init_app(app)  # Initialized inside the factory
+    db.init_app(app)  
     CORS(app)
 
     from controllers.user_controller import user_blueprint
